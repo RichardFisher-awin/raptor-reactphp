@@ -2,4 +2,4 @@
 
 with-contenv
 #todo signals
-php /react/src/app.php
+php /react/app.php

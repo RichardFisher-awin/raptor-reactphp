@@ -3,7 +3,10 @@ FROM php:7.2
 RUN apt-get -yq update \
     && apt-get install --assume-yes --no-install-recommends \
         sudo tar zip unzip bzip2 vim ssh git rsync ftp wget cron logrotate libssl-dev libicu-dev libpcre3-dev \
-        build-essential
+        build-essential nano
+
+#install ev extension
+RUN yes "" | pecl install ev && echo extension=ev.so > /usr/local/etc/php/conf.d/ev.ini
 
 WORKDIR /react
 RUN chown -R www-data:www-data /react

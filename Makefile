@@ -37,7 +37,7 @@ start: stop
 	# MySQL
 	cd docker/fixtures/mysql && $(MAKE) start
 
-	# Datafeeds
+	# App
 	docker run -d -e ZANOX_SERVER_NAME=react.$(server) --name react \
 	    $(port_mapping) \
 		--link react-mysql:mysql.local \

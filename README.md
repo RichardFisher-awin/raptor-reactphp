@@ -1,8 +1,8 @@
 # raptor-reactphp
 
-TODO:
+@TODO:
 
-- DI container, with a config file to describe dependencies
-- Make the dispatcher use a config file and the DI container rather than hard-coded routes
-- Endpoint to handle status.txt
-- MySQL healthcheck
+- Endpoint to handle status.txt: using https://github.com/reactphp/filesystem#reading-files
+- Class for instantiating named db adapters - using app3.json and https://github.com/friends-of-reactphp/mysql
+- MySQL healthcheck, and healthcheck controller
+- implement nginx load balancing, and socket-based workers, as per https://medium.com/@mtrdesign/reactphp-6c65735138a0

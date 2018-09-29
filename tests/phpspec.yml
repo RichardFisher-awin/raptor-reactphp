@@ -1,0 +1,6 @@
+suites:
+    Raptor:
+        namespace: Raptor
+        src_path: src
+        spec_path:  tests/phpspec/
+        psr4_prefix: Raptor
