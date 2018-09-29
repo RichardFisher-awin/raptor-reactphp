@@ -13,5 +13,11 @@ return [
             'action' => 'helloAction',
             'method' => 'GET'
         ],
+        [
+            'route' => '/sleep/{seconds:\d+}',
+            'controller' => 'controller.slow',
+            'action' => 'sleepAction',
+            'method' => 'GET'
+        ],
     ]
 ];
