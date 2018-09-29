@@ -1,0 +1,5 @@
+#!/usr/bin/execlineb -P
+
+with-contenv
+#todo signals
+php /react/src/app.php

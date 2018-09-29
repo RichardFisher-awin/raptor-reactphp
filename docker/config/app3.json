@@ -1,0 +1,18 @@
+{
+    "environment":"development",
+    "id":"app-config",
+    "db-access-credentials": {
+        "reacttestRo": {
+            "host":"mysql.local",
+            "db-name":"reacttest",
+            "username":"eml_ap_api_ro",
+            "password":"reacttest_ro"
+        },
+        "reacttestRW": {
+            "host":"mysql.local",
+            "db-name":"reacttest",
+            "username":"reacttest_rw",
+            "password":"passwordRw"
+        }
+    }
+}
