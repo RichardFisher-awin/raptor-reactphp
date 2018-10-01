@@ -22,40 +22,24 @@ class HealthcheckController
     {
         $loop = $this->loop;
         error_log('before promise');
-            error_log('before factory');
-            $factory = new Factory($loop);
-            error_log('after factory');
-            $uri = 'reacttest_ro:passwordRo@mysql.local/reacttest';
-            return $factory->createConnection($uri)->then(function (ConnectionInterface $connection) {
-                error_log('inside createConnection');
-                $connection->query('SHOW TABLES')->then(
-                    function (QueryResult $command) {
-                        error_log('inside QueryResult');
-                        error_log(print_r($command->resultRows,true));
+        error_log('before factory');
+        $factory = new Factory($loop);
+        error_log('after factory');
+        $uri = 'reacttest_ro:passwordRo@mysql.local/reacttest';
+        return $factory->createConnection($uri)->then(function (ConnectionInterface $connection) {
+            error_log('inside createConnection');
+            return $connection->query('SHOW TABLES')->then(
+                function (QueryResult $command) {
+                    error_log('inside QueryResult');
+                    error_log(print_r($command->resultRows,true));
+                    return new Response(200, ['Content-Type' => 'text/plain'],  print_r($command->resultRows, true));
+                },
+                function (\Exception $error) {
+                    error_log($error->getMessage());
+                }
+            );
 
-                        /*
-                        print_r($command->resultFields);
-                        print_r($command->resultRows);
-                        echo count($command->resultRows) . ' row(s) in set' . PHP_EOL;
-                        */
-//                        $response = new Response(200, ['Content-Type' => 'text/plain'],  print_r($command->resultRows, true));
-//                        $resolve($response);
-                        return $command->resultRows;
-
-                    },
-                    function (Exception $error) {
-                        $response = new Response(200, ['Content-Type' => 'text/plain'],  $error->getMessage());
-//                        $resolve($response);
-                    }
-                );
-
-                $connection->quit();
-            })->done(
-                function ($resultRows) {
-                    error_log('inside done');
-                    error_log(print_r($resultRows,true));
-
-                    return new Response(200, ['Content-Type' => 'text/plain'],  print_r($resultRows, true));
-            });
+            $connection->quit();
+        });
     }
 }
