@@ -19,5 +19,11 @@ return [
             'action' => 'sleepAction',
             'method' => 'GET'
         ],
+        [
+            'route' => '/raptor-reactphp/admin/health/check',
+            'controller' => 'controller.healthcheck',
+            'action' => 'indexAction',
+            'method' => 'GET'
+        ],
     ]
 ];
